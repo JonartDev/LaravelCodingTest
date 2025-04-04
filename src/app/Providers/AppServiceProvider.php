@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Services\ExternalProductService;
+use App\Services\FakeStoreApiService;
+use App\Services\PlatziApiService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,7 +14,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(ExternalProductService::class, function ($app) {
+            return new ExternalProductService(
+                $app->make(FakeStoreApiService::class),
+                $app->make(PlatziApiService::class)
+            );
+        });
     }
 
     /**

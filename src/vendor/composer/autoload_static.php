@@ -172,6 +172,7 @@ class ComposerStaticIniteadec2261c7727ac8b0d7775b140315d
         ),
         'A' => 
         array (
+            'App\\Services\\' => 13,
             'App\\' => 4,
         ),
     );
@@ -351,8 +352,8 @@ class ComposerStaticIniteadec2261c7727ac8b0d7775b140315d
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -510,6 +511,10 @@ class ComposerStaticIniteadec2261c7727ac8b0d7775b140315d
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
         ),
+        'App\\Services\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/Services',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -518,11 +523,19 @@ class ComposerStaticIniteadec2261c7727ac8b0d7775b140315d
     );
 
     public static $classMap = array (
+        'App\\Console\\Commands\\CleanupProducts' => __DIR__ . '/../..' . '/app/Console/Commands/CleanupProducts.php',
+        'App\\Console\\Commands\\UpdateProductQuantity' => __DIR__ . '/../..' . '/app/Console/Commands/UpdateProductQuantity.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Contracts\\ProductInterface' => __DIR__ . '/../..' . '/app/Contracts/ProductInterface.php',
+        'App\\Events\\ProductCreated' => __DIR__ . '/../..' . '/app/Events/ProductCreated.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\Admin\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminController.php',
+        'App\\Http\\Controllers\\Admin\\AdminProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminProductController.php',
+        'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
+        'App\\Http\\Middleware\\CheckAdmin' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckAdmin.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => __DIR__ . '/../..' . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
@@ -531,12 +544,20 @@ class ComposerStaticIniteadec2261c7727ac8b0d7775b140315d
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Listeners\\SendProductCreatedNotification' => __DIR__ . '/../..' . '/app/Listeners/SendProductCreatedNotification.php',
+        'App\\Mail\\ProductCreatedMail' => __DIR__ . '/../..' . '/app/Mail/ProductCreatedMail.php',
+        'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\UserRole' => __DIR__ . '/../..' . '/app/Models/UserRole.php',
+        'App\\Observers\\ProductObserver' => __DIR__ . '/../..' . '/app/Observers/ProductObserver.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\Services\\ExternalProductService' => __DIR__ . '/../..' . '/app/Services/ExternalProductService.php',
+        'App\\Services\\FakeStoreApiService' => __DIR__ . '/../..' . '/app/Services/FakeStoreApiService.php',
+        'App\\Services\\PlatziApiService' => __DIR__ . '/../..' . '/app/Services/PlatziApiService.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
@@ -6370,6 +6391,7 @@ class ComposerStaticIniteadec2261c7727ac8b0d7775b140315d
         'Termwind\\ValueObjects\\Styles' => __DIR__ . '/..' . '/nunomaduro/termwind/src/ValueObjects/Styles.php',
         'Tests\\CreatesApplication' => __DIR__ . '/../..' . '/tests/CreatesApplication.php',
         'Tests\\Feature\\ExampleTest' => __DIR__ . '/../..' . '/tests/Feature/ExampleTest.php',
+        'Tests\\Feature\\ProductTest' => __DIR__ . '/../..' . '/tests/Feature/ProductTest.php',
         'Tests\\TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Tests\\Unit\\ExampleTest' => __DIR__ . '/../..' . '/tests/Unit/ExampleTest.php',
         'TheSeer\\Tokenizer\\Exception' => __DIR__ . '/..' . '/theseer/tokenizer/src/Exception.php',

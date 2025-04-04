@@ -151,3 +151,67 @@ For open source projects, say how it is licensed.
 
 ## Project status
 If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+
+
+
+
+# Product Management API
+
+A Laravel-based API for managing products with user roles and authentication.
+
+## Features
+
+- User authentication (register, login, logout)
+- Role-based access control (admin/user)
+- CRUD operations for products
+- Image upload to FTP server
+- Scheduled tasks
+- External API integration
+- Caching
+- Unit testing
+
+## API Documentation
+
+[Postman Collection](https://www.getpostman.com/collections/...)  
+[Swagger UI](http://localhost:8000/api/documentation)
+
+## Coding Principles
+
+1. **SOLID Principles**:
+   - Single Responsibility Principle (each class has one responsibility)
+   - Open/Closed Principle (extendable without modification)
+   - Liskov Substitution Principle (interfaces ensure substitutability)
+   - Interface Segregation Principle (specific interfaces)
+   - Dependency Inversion Principle (depend on abstractions)
+
+2. **DRY (Don't Repeat Yourself)**
+3. **KISS (Keep It Simple, Stupid)**
+4. **YAGNI (You Aren't Gonna Need It)**
+5. **PSR Standards**
+6. **Repository Pattern** (for data access)
+7. **Service Layer** (for business logic)
+8. **Dependency Injection**
+9. **Caching** for performance
+10. **Validation** at multiple levels
+
+## Installation
+
+1. Clone the repository
+2. Run `composer install`
+3. Copy `.env.example` to `.env` and configure
+4. Run `php artisan key:generate`
+5. Start containers with `docker-compose up -d`
+6. Run migrations: `php artisan migrate`
+7. Run tests: `php artisan test`
+
+## Scheduled Tasks
+
+- Cleanup low-quantity products: Runs every Monday at midnight
+
+## External APIs
+
+Integrated with:
+- https://fakestoreapi.com/
+- https://fakeapi.platzi.com/
+
+Switch between APIs using the `/api/external-products/switch-api` endpoint.
