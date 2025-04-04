@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use App\Services\ExternalProductService;
 use App\Services\FakeStoreApiService;
 use App\Services\PlatziApiService;
+use App\Models\Product;
+use App\Observers\ProductObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,6 +29,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Product::observe(ProductObserver::class);
     }
 }

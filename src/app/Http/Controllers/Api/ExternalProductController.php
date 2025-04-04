@@ -27,6 +27,19 @@ class ExternalProductController extends Controller
         $product = $this->externalProductService->addProduct($request->all());
         return response()->json($product, 201);
     }
+    // public function addProduct(Request $request)
+    // {
+    //     $data = $request->all();
+
+    //     // Handle image upload if present
+    //     if ($request->hasFile('image')) {
+    //         $path = $request->file('image')->store('product_images', 'public');
+    //         $data['image'] = asset('storage/' . $path);
+    //     }
+
+    //     $product = $this->externalProductService->addProduct($data);
+    //     return response()->json($product, 201);
+    // }
 
     public function switchApi(Request $request)
     {

@@ -21,7 +21,7 @@ class PlatziApiService implements ProductInterface
         $response = Http::post("{$this->baseUrl}/products", [
             'title' => $data['title'],
             'price' => $data['price'] ?? 0,
-            'description' => $data['description'] ?? '',
+            'body' => $data['body'] ?? '',
             'categoryId' => $data['category_id'] ?? 1,
             'images' => $data['images'] ?? ['https://placeimg.com/640/480/any'],
         ]);

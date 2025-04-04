@@ -7,6 +7,10 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Cache;
+use App\Services\ProductService;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User; // Add this import
 
 class ProductController extends Controller
 {
@@ -17,6 +21,21 @@ class ProductController extends Controller
         });
 
         return response()->json($products);
+    }
+    public function myProducts()
+    {
+        /** @var User $user */
+        $user = Auth::user();
+
+        $products = $user->products() 
+            ->with('user:id,name,email')
+            ->latest()
+            ->paginate(10);
+
+        return response()->json([
+            'success' => true,
+            'data' => $products
+        ]);
     }
 
     public function store(Request $request)

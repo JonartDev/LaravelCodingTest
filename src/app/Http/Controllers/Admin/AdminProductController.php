@@ -18,7 +18,7 @@ class AdminProductController extends Controller
         $products = Product::with('user')
             ->latest()
             ->paginate(10);
-            
+
         return view('admin.products.index', compact('products'));
     }
 
@@ -36,9 +36,9 @@ class AdminProductController extends Controller
     public function store(Request $request)
     {
         $validated = $this->validateProduct($request);
-        
+
         $productData = $this->prepareProductData($validated, $request);
-        
+
         Product::create($productData);
 
         return redirect()
@@ -60,9 +60,9 @@ class AdminProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $validated = $this->validateProduct($request, $product->id);
-        
+
         $productData = $this->prepareProductData($validated, $request, $product);
-        
+
         $product->update($productData);
 
         return redirect()
@@ -89,7 +89,7 @@ class AdminProductController extends Controller
     protected function validateProduct(Request $request, $productId = null)
     {
         return $request->validate([
-            'title' => 'required|string|max:255|unique:products,title,'.$productId,
+            'title' => 'required|string|max:255|unique:products,title,' . $productId,
             'body' => 'required|string',
             'price' => 'required|numeric|min:0',
             'quantity' => 'required|integer|min:0',
@@ -115,7 +115,7 @@ class AdminProductController extends Controller
             if ($product && $product->image_path) {
                 $this->deleteProductImage($product);
             }
-            
+
             $data['image_path'] = $this->storeProductImage($request->file('image'));
         }
 
@@ -128,6 +128,18 @@ class AdminProductController extends Controller
     protected function storeProductImage($image)
     {
         return $image->store('products', 'public');
+    }
+    public function show($id)
+    {
+        $product = Product::with('user')->findOrFail($id);
+
+        return response()->json([
+            'title' => $product->title,
+            'image_path' => asset( $product->image_url), // or just $product->image_url if it's full URL
+            'body' => $product->body,
+            'quantity' => $product->quantity,
+            'seller' => $product->user->name ?? 'N/A',
+        ]);
     }
 
     /**

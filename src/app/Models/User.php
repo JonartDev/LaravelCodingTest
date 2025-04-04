@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use Illuminate\Database\Eloquent\Relations\HasMany; 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -38,7 +38,7 @@ class User extends Authenticatable
         return $this->role_id === UserRole::ADMIN;
     }
 
-    public function products()
+    public function products(): HasMany  // Explicit return type
     {
         return $this->hasMany(Product::class);
     }

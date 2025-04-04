@@ -15,7 +15,11 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Product routes for all users
     Route::apiResource('products', ProductController::class);
+    // Route::get('/product_list', [ProductController::class, 'index']);
+    Route::get('/my-products', [ProductController::class, 'myProducts']);
 
+    Route::post('/products/add', [ExternalProductController::class, 'addProduct'])
+        ->name('api.products.add');
     // Admin only routes
     Route::middleware('admin')->group(function () {
         // Admin routes
