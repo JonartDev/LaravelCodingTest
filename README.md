@@ -1,5 +1,3 @@
-# Solaire I2 LEMP Docker
-
 This is a docker image meant for local development. 
 
 FEATURES:
