@@ -198,9 +198,10 @@ A Laravel-based API for managing products with user roles and authentication.
 2. Run `composer install`
 3. Copy `.env.example` to `.env` and configure
 4. Run `php artisan key:generate`
-5. Start containers with `docker-compose up -d`
-6. Run migrations: `php artisan migrate`
-7. Run tests: `php artisan test`
+5. Run `php artisan storage:link`
+6. Start containers with `docker-compose up -d`
+7. Run migrations: `php artisan migrate`
+8. Run tests: `php artisan test`
 
 ## Scheduled Tasks
 
